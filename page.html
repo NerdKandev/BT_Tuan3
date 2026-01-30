@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Admin - Product Table (Bootstrap)</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			/* preserve black/white alternating rows while keeping Bootstrap look */
+			table#productTable tbody tr:nth-child(odd){background:#000;color:#fff}
+			table#productTable tbody tr:nth-child(even){background:#fff;color:#000}
+			table#productTable thead th{background:#212529;color:#fff}
+
+			/* thumbnail box: fixed size, center, crop with object-fit */
+			.img-thumb{width:160px;height:120px;overflow:hidden;border-radius:6px;display:flex;align-items:center;justify-content:center;background:#f8f9fa}
+			.img-thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+			@media (max-width:720px){.img-thumb{width:110px;height:88px}}
+		</style>
+	</head>
+	<body>
+		<div class="container py-4">
+			<div class="d-flex align-items-center mb-3">
+				<h3 class="mb-0">Bảng quản lý sản phẩm</h3>
+			</div>
+
+			<div class="row mb-3">
+				<div class="col-12 col-md-6 mb-2">
+					<div class="input-group">
+						<span class="input-group-text">Tìm</span>
+						<input id="search" type="search" class="form-control" placeholder="Gõ để tìm theo title...">
+					</div>
+				</div>
+				<div class="col-6 col-md-3 mb-2">
+					<label class="form-label small mb-1">Hiện / trang</label>
+					<select id="pageSize" class="form-select">
+						<option value="5">5</option>
+						<option value="10" selected>10</option>
+						<option value="20">20</option>
+					</select>
+				</div>
+				<div class="col-6 col-md-3 d-flex justify-content-md-end align-items-end mb-2">
+					<div class="btn-group" role="group">
+						<button id="sortPrice" class="btn btn-outline-primary" title="Sắp xếp theo giá">Giá <span class="ms-1">↑/↓</span></button>
+						<button id="sortTitle" class="btn btn-outline-primary" title="Sắp xếp theo tên">Tên <span class="ms-1">↑/↓</span></button>
+					</div>
+				</div>
+			</div>
+
+			<div class="table-responsive">
+				<table id="productTable" class="table table-bordered align-middle">
+					<thead>
+						<tr>
+							<th scope="col">Ảnh</th>
+							<th scope="col">Title</th>
+							<th scope="col">Category</th>
+							<th scope="col">Description</th>
+							<th scope="col">Price</th>
+							<th scope="col">Creation</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+
+			<div class="d-flex justify-content-between align-items-center mt-3">
+				<nav id="pager" aria-label="Product pagination"></nav>
+				<div class="small text-muted" id="summary"></div>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>
+
